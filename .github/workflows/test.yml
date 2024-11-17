@@ -71,7 +71,9 @@ jobs:
     runs-on: ubuntu-24.04
 
     needs: test
-    if: ${{ github.repository == 'openresty/lua-cjson' && github.ref_type == 'tag' }}
+    if: ${{ github.repository == 'luau-project/lua-cjson' && github.ref_type == 'tag' }}
+    # if: ${{ github.repository == 'openresty/lua-cjson' && github.ref_type == 'tag' }}
+
 
     steps:
     - uses: actions/checkout@master
@@ -100,10 +102,10 @@ jobs:
         luarocks install luasocket;
         luarocks install luasec;
 
-    - name: Upload to LuaRocks
-      env:
-        UPLOAD_KEY: "${{ secrets.LUAROCKS_APIKEY }}"
-      run: |
-        echo -e "Uploading rockspec: \e[36m${{ env.ROCKSPEC }}\e[0m";
+    # - name: Upload to LuaRocks
+    #   env:
+    #     UPLOAD_KEY: "${{ secrets.LUAROCKS_APIKEY }}"
+    #   run: |
+    #     echo -e "Uploading rockspec: \e[36m${{ env.ROCKSPEC }}\e[0m";
         
-        luarocks upload "${{ env.ROCKSPEC }}" "--temp-key" "$UPLOAD_KEY";
+    #     luarocks upload "${{ env.ROCKSPEC }}" "--temp-key" "$UPLOAD_KEY";
